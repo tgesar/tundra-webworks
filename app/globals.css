@@ -1,0 +1,95 @@
+/* app/globals.css */
+
+/* 1) Font & Tailwind imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2) Base resets */
+@layer base {
+  :root {
+    --color-bg: #282b30;
+    --color-primary: #8e84ff;
+    --color-secondary: #8e84ff;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply m-0 p-0 bg-background text-white font-sans;
+  }
+}
+
+/* 3) Component styles (buttons) */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-2 rounded-full font-semibold transition duration-200;
+  }
+  .btn-primary {
+    @apply bg-secondary text-white;
+  }
+  .btn-secondary {
+    @apply bg-white text-secondary;
+  }
+}
+
+/* 4) Utility extensions (colors & marquee) */
+@layer utilities {
+  .bg-background {
+    background-color: var(--color-bg) !important;
+  }
+  .text-primary {
+    color: var(--color-primary) !important;
+  }
+  .text-secondary {
+    color: var(--color-secondary) !important;
+  }
+
+  .marquee {
+    overflow: hidden;
+    position: relative;
+  }
+  .marquee__track {
+    @apply flex gap-16;
+    animation: marquee 20s linear infinite;
+  }
+  .marquee__track img {
+    @apply w-16 opacity-70 flex-shrink-0;
+  }
+}
+
+/* 5) Keyframes */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* globals.css */
+
+/* Continuous marquee animation */
+.marquee__track {
+  /* Move the track from 0 → -50% of its own width forever */
+  animation: marquee 16s linear infinite;
+}
+
+/* Keyframes scroll exactly one full logo-set (i.e. half the track) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* 1. Define the fadeIn keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 2. Utility class for applying it */
+.fade-in {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+
