@@ -33,7 +33,7 @@ export default function AboutPage() {
             <span className="text-secondary">Webworks</span>
           </h2>
           <p className="text-xl leading-relaxed">
-            I grew up fascinated by technology—building my first website back in
+            I grew up fascinated by technology—building my first website in
             college and discovering how code could bring ideas to life. After earning
             my B.A.Sc. in IT Security from the University of Minnesota, I launched
             Tundra Webworks to help businesses share their stories online.

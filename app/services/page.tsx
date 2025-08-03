@@ -7,7 +7,7 @@ export default function ServicesPage() {
   const packages = [
     {
       name: 'Starter',
-      price: '$400',
+      price: '$450',
       description: [
         'Front-end only, up to 5 responsive pages',
         'Clean branding & layout',
