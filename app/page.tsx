@@ -57,9 +57,11 @@ export default function HomePage() {
             src="/images/transparentHome.png"
             alt="Web design showcase"
             className="
-              static                     /* ensure it's not sticky */
-              w-[40%]                    /* mobile: 40% width */
-              md:w-[30rem] lg:w-[825px]  /* larger breakpoints */
+              static
+              w-[140%]        /* mobile: ~3.5× larger */
+              md:w-[30rem]    /* tablet+ */
+              lg:w-[825px]    /* desktop */
+              mx-auto         /* center on mobile */
               object-contain drop-shadow-2xl
               transform translate-x-[48px] -translate-y-[15px]
             "
@@ -98,8 +100,9 @@ export default function HomePage() {
               src="/images/animatedweb.gif"
               alt="Animated web demo"
               className="
-                w-[40%]
-                md:w-[30rem]
+                w-[140%]        /* mobile: ~3.5× larger */
+                md:w-[30rem]    /* tablet+ */
+                mx-auto         /* center on mobile */
                 object-contain
               "
             />
