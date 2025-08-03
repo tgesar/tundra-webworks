@@ -57,13 +57,12 @@ export default function HomePage() {
             src="/images/transparentHome.png"
             alt="Web design showcase"
             className="
-              static
-              w-[140%]        /* mobile: ~3.5× larger */
-              md:w-[30rem]    /* tablet+ */
-              lg:w-[825px]    /* desktop */
-              mx-auto         /* center on mobile */
+              w-[140%]          /* mobile: ~350% */
+              md:w-[30rem]      /* tablet+ */
+              lg:w-[825px]      /* desktop */
+              mx-auto           /* center on mobile */
               object-contain drop-shadow-2xl
-              transform translate-x-[48px] -translate-y-[15px]
+              lg:translate-x-[48px] lg:-translate-y-[15px] /* only on lg+ */
             "
           />
         </div>
@@ -100,7 +99,7 @@ export default function HomePage() {
               src="/images/animatedweb.gif"
               alt="Animated web demo"
               className="
-                w-[140%]        /* mobile: ~3.5× larger */
+                w-[140%]        /* mobile: ~350% */
                 md:w-[30rem]    /* tablet+ */
                 mx-auto         /* center on mobile */
                 object-contain
