@@ -1,3 +1,4 @@
+// components/Navbar.tsx
 'use client'
 
 import Link from 'next/link'
@@ -11,7 +12,8 @@ export default function Navbar() {
       <Link href="/" className="flex-shrink-0">
         <span className="text-xl lg:text-2xl font-bold flex items-baseline">
           <span className="text-[var(--offwhite)]">Tundra</span>
-          <span className="text-[var(--secondary-accent)] ml-1">Webworks</span>
+          {/* ONLY this span is now hard-coded to your secondary accent */}
+          <span className="text-[#8e84ff] ml-1">Webworks</span>
         </span>
       </Link>
 
