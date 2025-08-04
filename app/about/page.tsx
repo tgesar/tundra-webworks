@@ -7,28 +7,29 @@ export default function AboutPage() {
   return (
     <main className="bg-background text-white font-sans">
       {/* Hero Slogan */}
-      <section className="py-20 px-6 lg:px-24 flex justify-center">
+      <section className="pt-16 pb-0 px-6 lg:px-24 flex justify-center">
         <h1 className="text-5xl lg:text-6xl font-bold text-center leading-tight max-w-4xl">
           <span className="text-white">Your Vision,</span>{' '}
           <span className="text-secondary">Our Expertise</span>
         </h1>
       </section>
 
-      {/* Intro: Image + Bio */}
-      <section className="py-16 px-6 lg:px-24 flex flex-col lg:flex-row items-center gap-12">
+      {/* Intro: Image + Bio (moved closer to top) */}
+      <section className="pt-0 pb-10 px-6 lg:px-24 flex flex-col lg:flex-row items-center gap-12">
         {/* Left: Portrait */}
         <div className="lg:w-2/5 flex justify-center">
-          <img
-            src="/images/pfp.jpeg"
-            alt="Trenzin Gesar"
-            className="w-full max-w-xl object-contain drop-shadow-2xl"
-          />
-        </div>
+  <img
+    src="/images/transparentpfp.png"
+    alt="Trenzin Gesar"
+    className="w-full max-w-[300px] lg:max-w-[400px] object-contain drop-shadow-2xl -mt-6"
+  />
+</div>
+
 
         {/* Right: Bio Text */}
         <div className="lg:w-3/5 space-y-6">
           <h2 className="text-4xl lg:text-5xl font-semibold">
-            Hi, I’m Trenzin Gesar<br />— Founder of{' '}
+            Hi, I’m Trenzin!<br />— Founder of{' '}
             <span className="text-white">Tundra</span>{' '}
             <span className="text-secondary">Webworks</span>
           </h2>
@@ -48,7 +49,7 @@ export default function AboutPage() {
       </section>
 
       {/* Goals / Morals Spacer */}
-      <section className="py-12 bg-[#1f2125]" />
+      <section className="py-10 bg-[#1f2125]" />
 
       {/* “Your Needs Fully Covered” Process */}
       <section className="py-20 px-6 lg:px-24 space-y-16">
@@ -63,7 +64,6 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Add margin-top here for extra spacing */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-48">
           {/* Step 1 */}
           <div className="flex items-start gap-8">
