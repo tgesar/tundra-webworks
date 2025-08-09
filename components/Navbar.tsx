@@ -3,45 +3,110 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/contact', label: 'Contact' },
+]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
 
   return (
-    <header className="bg-background px-4 py-3 flex items-center justify-between sticky top-0 z-30">
-      <Link href="/" className="flex-shrink-0">
-        <span className="text-xl lg:text-2xl font-bold flex items-baseline">
-          <span className="text-[var(--offwhite)]">Tundra</span>
-          {/* ONLY this span is now hard-coded to your secondary accent */}
-          <span className="text-[#8e84ff] ml-1">Webworks</span>
-        </span>
-      </Link>
+    <header
+      className="
+        sticky top-0 z-50
+        bg-background/80 backdrop-blur-md
+        border-b border-white/10
+      "
+    >
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
+        {/* Brand */}
+        <Link href="/" className="flex-shrink-0 group" onClick={() => setOpen(false)}>
+          <span className="text-2xl font-bold tracking-tight flex items-baseline">
+            <span className="text-[var(--offwhite)]">Tundra</span>
+            <span className="ml-1 text-[#8e84ff] group-hover:opacity-90 transition-opacity">
+              Webworks
+            </span>
+          </span>
+        </Link>
 
-      <button
-        className="md:hidden text-white text-2xl"
-        onClick={() => setOpen(!open)}
-        aria-label="Toggle menu"
-      >
-        {open ? '✕' : '☰'}
-      </button>
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {links.map(({ href, label }) => {
+            const active = pathname === href
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`
+                  relative text-sm tracking-wide
+                  ${active ? 'text-[#8e84ff]' : 'text-white/80 hover:text-white'}
+                  transition-colors
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8e84ff]/60 rounded
+                `}
+              >
+                {label}
+                {/* underline / active indicator */}
+                <span
+                  className={`
+                    pointer-events-none absolute -bottom-1 left-0 h-[2px] w-full
+                    transition-opacity
+                    ${active ? 'opacity-100 bg-[#8e84ff]' : 'opacity-0 group-hover:opacity-100 bg-white/40'}
+                  `}
+                />
+              </Link>
+            )
+          })}
+        </nav>
 
-      <nav
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden text-white/90 text-2xl p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8e84ff]/60"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+        >
+          {open ? '✕' : '☰'}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      <div
+        id="mobile-menu"
         className={`
-          md:flex md:items-center md:gap-6
-          ${open ? 'flex flex-col items-center gap-4 mt-2' : 'hidden'}
+          md:hidden overflow-hidden transition-[max-height] duration-300
+          ${open ? 'max-h-96' : 'max-h-0'}
         `}
       >
-        {['Home','About','Services','Contact'].map((lbl,i) => (
-          <Link
-            key={i}
-            href={ i === 0 ? '/' : `/${lbl.toLowerCase()}` }
-            className="header-links font-light text-lg"
-            onClick={()=>setOpen(false)}
-          >
-            {lbl}
-          </Link>
-        ))}
-      </nav>
+        <nav className="px-4 pb-4">
+          <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md p-3 flex flex-col">
+            {links.map(({ href, label }) => {
+              const active = pathname === href
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setOpen(false)}
+                  className={`
+                    w-full px-4 py-3 rounded-xl text-base text-center
+                    ${active ? 'bg-[#8e84ff] text-white' : 'text-white/90 hover:bg-white/10'}
+                    transition-colors
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8e84ff]/60
+                  `}
+                >
+                  {label}
+                </Link>
+              )
+            })}
+          </div>
+        </nav>
+      </div>
     </header>
   )
 }
